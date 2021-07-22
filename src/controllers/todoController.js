@@ -12,7 +12,7 @@ exports.home = (req, res) => {
 exports.list = (req, res) => {
     Todos.find((err, data) => {
         if(!err){
-            if(req.headers && req.headers.authorization == 'Bearer '.process.env.TOKEN){
+            if(req.headers && req.headers.authorization == `Bearer ${process.env.TOKEN}`){
                 if(data.length > 0){
                     res.status(200).json({
                         status: 'success',
