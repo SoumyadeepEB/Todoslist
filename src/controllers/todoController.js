@@ -1,6 +1,6 @@
 const Todos = require('../models/todoModel')
 
-exports.about = (req, res) => {
+exports.home = (req, res) => {
     res.json({
         project: 'Todo List',
         author: 'Soumyadeep Ghosh',
