@@ -2,7 +2,7 @@ const Todos = require('../models/todoModel')
 
 exports.home = (req, res) => {
     res.json({
-        project: 'Todolist',
+        project: 'Todo List',
         author: 'Soumyadeep Ghosh',
         language: 'Nodejs',
         version: '1.0'
