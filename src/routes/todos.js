@@ -3,7 +3,8 @@ const todoController = require('../controllers/todoController')
 
 const router = express.Router()
 
-router.get('/', todoController.list)
+router.get('/', todoController.home)
+router.get('/todos', todoController.list)
 router.get('/todo/:id', todoController.listone)
 router.post('/addtodo', todoController.add)
 router.put('/edittodo/:id', todoController.edit)

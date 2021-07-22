@@ -1,5 +1,14 @@
 const Todos = require('../models/todoModel')
 
+exports.home = (req, res) => {
+    res.json({
+        project: 'Todolist',
+        author: 'Soumyadeep Ghosh',
+        language: 'Nodejs',
+        version: '1.0'
+    })
+}
+
 exports.list = (req, res) => {
     Todos.find((err, data) => {
         if(!err){
