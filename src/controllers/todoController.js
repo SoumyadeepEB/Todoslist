@@ -12,15 +12,22 @@ exports.home = (req, res) => {
 exports.list = (req, res) => {
     Todos.find((err, data) => {
         if(!err){
-            if(data.length > 0){
-                res.status(200).json({
-                    status: 'success',
-                    data: data
-                })
+            if(req.headers && req.headers.authorization == 'Bearer '.process.env.TOKEN){
+                if(data.length > 0){
+                    res.status(200).json({
+                        status: 'success',
+                        data: data
+                    })
+                }else{
+                    res.status(200).json({
+                        status: 'success',
+                        message: 'No record found'
+                    })
+                }
             }else{
-                res.status(200).json({
-                    status: 'success',
-                    message: 'No record found'
+                res.status(401).json({
+                    status: 'error',
+                    message: 'Authentication failed'
                 })
             }
         }else{
