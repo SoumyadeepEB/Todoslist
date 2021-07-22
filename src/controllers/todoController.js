@@ -10,9 +10,9 @@ exports.home = (req, res) => {
 }
 
 exports.list = (req, res) => {
-    Todos.find((err, data) => {
-        if(!err){
-            if(req.headers && req.headers.authorization == `Bearer ${process.env.TOKEN}`){
+    if(req.headers && req.headers.authorization == `Bearer ${process.env.TOKEN}`){
+        Todos.find((err, data) => {
+            if(!err){
                 if(data.length > 0){
                     res.status(200).json({
                         status: 'success',
@@ -25,18 +25,18 @@ exports.list = (req, res) => {
                     })
                 }
             }else{
-                res.status(401).json({
+                res.status(400).json({
                     status: 'error',
-                    message: 'Authentication failed'
+                    message: 'Something is going wrong'
                 })
             }
-        }else{
-            res.status(400).json({
-                status: 'error',
-                message: 'Something is going wrong'
-            })
-        }
-    })
+        })
+    }else{
+        res.status(401).json({
+            status: 'error',
+            message: 'Authentication failed'
+        })
+    }
 }
 
 exports.listone = (req, res) => {
