@@ -195,3 +195,9 @@ exports.delete = (req, res) => {
         })
     }
 }
+
+exports.error = (req, res) => {
+    res.json({
+        message: 'Content not found'
+    })
+}
