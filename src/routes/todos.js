@@ -10,6 +10,7 @@ router.post('/addtodo', todoController.add)
 router.put('/edittodo/:id', todoController.edit)
 router.patch('/todostatus/:id', todoController.change)
 router.delete('/deletetodo/:id', todoController.delete)
+router.post('/login', todoController.login)
 router.get('*', todoController.error)
 
 module.exports = router

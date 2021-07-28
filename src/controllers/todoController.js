@@ -1,3 +1,4 @@
+const jwt = require('jsonwebtoken')
 const Todos = require('../models/todoModel')
 
 exports.home = (req, res) => {
@@ -192,6 +193,23 @@ exports.delete = (req, res) => {
         res.status(401).json({
             status: 'error',
             message: 'Authentication failed'
+        })
+    }
+}
+
+exports.login = (req, res) => {
+    const email = 'soumyadeep@gmail.com'
+    const password = 'Hello@123'
+    if(req.body.email == email && req.body.password == password){
+        const token = jwt.sign({name: 'Soumyadeep Ghosh', exp: Math.floor(Date.now()/1000)+3600}, process.env.TOKEN)
+        res.status(200).json({
+            status: 'success',
+            token: token
+        })
+    }else{
+        res.status(401).json({
+            status: 'error',
+            message: 'Wrong cridential'
         })
     }
 }
