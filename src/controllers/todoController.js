@@ -207,8 +207,9 @@ exports.login = (req, res) => {
             token: token
         })
     }else{
-        res.status(401).json({
+        res.status(200).json({
             status: 'error',
+            code: '400',
             message: 'Wrong cridential'
         })
     }
